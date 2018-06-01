@@ -1,30 +1,28 @@
 package com.training.design.patterns.chapter1;
 
+import com.training.design.patterns.chapter1.behavior.FlyNoWay;
+import com.training.design.patterns.chapter1.behavior.Squeak;
 import com.training.design.patterns.chapter1.model.*;
 
 public class SimUDuck {
 
+    static void performDuckActions(Duck duck) {
+        duck.display();
+        duck.performQuack();
+        duck.swim();
+        duck.performFly();
+    }
+
     public static void main(String[] args) {
         Duck mallardDuck = new MallardDuck();
-        Duck redheadDuck = new RedheadDuck();
-        Duck rubberDuck = new RubberDuck();
-        Duck decoyDuck = new DecoyDuck();
+        performDuckActions(mallardDuck);
 
-        mallardDuck.display();
-        ((MallardDuck) mallardDuck).quack();
-        mallardDuck.swim();
-        ((MallardDuck) mallardDuck).fly();
+        mallardDuck.setFlyBehavior(new FlyNoWay());
+        mallardDuck.setQuackBehavior(new Squeak());
+        performDuckActions(mallardDuck);
 
-        redheadDuck.display();
-        ((RedheadDuck) redheadDuck).quack();
-        redheadDuck.swim();
-        ((RedheadDuck) redheadDuck).fly();
-
-        rubberDuck.display();
-        ((RubberDuck) rubberDuck).quack();
-        rubberDuck.swim();
-
-        decoyDuck.display();
-        decoyDuck.swim();
+        performDuckActions(new RedheadDuck());
+        performDuckActions(new RubberDuck());
+        performDuckActions(new DecoyDuck());
     }
 }

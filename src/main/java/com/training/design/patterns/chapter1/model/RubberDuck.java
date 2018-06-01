@@ -1,13 +1,17 @@
 package com.training.design.patterns.chapter1.model;
 
-public class RubberDuck extends Duck implements Quackable {
+import com.training.design.patterns.chapter1.behavior.FlyNoWay;
+import com.training.design.patterns.chapter1.behavior.Squeak;
+
+public class RubberDuck extends Duck {
+
+    public RubberDuck() {
+        flyBehavior = new FlyNoWay();
+        quackBehavior = new Squeak();
+    }
 
     @Override
     public void display() {
         System.out.println("I am a Rubber duck");
-    }
-
-    public void quack() {
-        System.out.println("Squeak squeak");
     }
 }

@@ -1,10 +1,32 @@
 package com.training.design.patterns.chapter1.model;
 
+import com.training.design.patterns.chapter1.behavior.FlyBehavior;
+import com.training.design.patterns.chapter1.behavior.QuackBehavior;
+
 public abstract class Duck {
 
-    public void swim() {
-        System.out.println("I can swim");
-    }
+    FlyBehavior flyBehavior;
+    QuackBehavior quackBehavior;
 
     public abstract void display();
+
+    public void swim() {
+        System.out.println("All ducks float, so all can swim");
+    }
+
+    public void performFly() {
+        flyBehavior.fly();
+    }
+
+    public void performQuack() {
+        quackBehavior.quack();
+    }
+
+    public void setFlyBehavior(FlyBehavior flyBehavior) {
+        this.flyBehavior = flyBehavior;
+    }
+
+    public void setQuackBehavior(QuackBehavior quackBehavior) {
+        this.quackBehavior = quackBehavior;
+    }
 }
