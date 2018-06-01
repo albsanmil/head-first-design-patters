@@ -1,0 +1,9 @@
+package com.training.design.patterns.chapter1.model;
+
+public class DecoyDuck extends Duck {
+
+    @Override
+    public void display() {
+        System.out.println("I am a Decoy duck");
+    }
+}
